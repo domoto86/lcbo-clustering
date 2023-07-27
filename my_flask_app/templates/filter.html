@@ -15,7 +15,7 @@
         <h1>CSV Data Filter</h1>
 
         <!-- Filter form -->
-        <form method="POST" action="/">
+        <form method="POST" action="{{ url_for('filter_page') }}">
             <label for="filter_column">Select column to filter:</label>
             <select name="filter_column" id="filter_column">
                 <option value="Segment">Segment</option>
@@ -28,7 +28,7 @@
                     <option value="{{ value }}" {% if value == filter_value %}selected{% endif %}>{{ value }}</option>
                 {% endfor %}
             </select>
-            <input type="submit" value="Filter">
+            <button type="submit" class="filter-button">Filter</button>
         </form>
 
         <!-- Filtered Data -->

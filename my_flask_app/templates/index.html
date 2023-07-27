@@ -8,12 +8,13 @@
 </head>
 <body>
     <div class="container">
-        <!-- Logo and Let's Go Back Button -->
+        <!-- Logo and Filter Data Button -->
         <div class="logo-container">
             <img id="logo" src="{{ url_for('static', filename='LCBO_01.gif') }}" alt="Logo">
-            <a href="{{ url_for('filter_page') }}" class="filter-button">Filter Data</a>
+            <form method="POST" action="{{ url_for('filter_page') }}">
+                <button type="submit" class="filter-button">Filter Data</button>
+            </form>
         </div>
-        <form method="POST" action="/filter"></form>
     </div>
-</body>ac
+</body>
 </html>
