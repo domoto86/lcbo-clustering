@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Filtered Data</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="logo-container">
+            <img id="logo" src="{{ url_for('static', filename='LCBO_08-1920x1311.jpg') }}" alt="Logo">
+            <a href="{{ url_for('index') }}" class="filter-button">Let's Go Back</a> 
+        </div>
+        <h1>CSV Data Filter</h1>
+
+        <!-- Filter form -->
+        <form method="POST" action="/">
+            <label for="filter_column">Select column to filter:</label>
+            <select name="filter_column" id="filter_column">
+                <option value="Segment">Segment</option>
+                
+            </select>
+            <label for="filter_value">Enter filter value:</label>
+            <select name="filter_value" id="filter_value">
+                <option value="">--All--</option>
+                {% for value in unique_values %}
+                    <option value="{{ value }}" {% if value == filter_value %}selected{% endif %}>{{ value }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Filter">
+        </form>
+
+        <!-- Filtered Data -->
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Regular Price</th>
+                <th>Sale Price</th>
+                <th>Rating</th>
+                <th>Reviews</th>
+                <th>Size</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Alcohol/Vol</th>
+                <th>Made In</th>
+                <th>By</th>
+                <th>Varietal</th>
+                <th>Release Date</th>
+                <th>Lat</th>
+                <th>Lon</th>
+                <th>Sugar Content (g/L)</th>
+                <th>Segment</th>
+            </tr>
+            {% for row in data %}
+                <tr>
+                    <td>{{ row.Name }}</td>
+                    <td>{{ row['Regular Price'] }}</td>
+                    <td>{{ row['Sale Price'] }}</td>
+                    <td>{{ row.Rating }}</td>
+                    <td>{{ row.Reviews }}</td>
+                    <td>{{ row.Size }}</td>
+                    <td>{{ row.Description }}</td>
+                    <td>{{ row.Category }}</td>
+                    <td>{{ row['Alcohol/Vol'] }}</td>
+                    <td>{{ row['Made In'] }}</td>
+                    <td>{{ row.By }}</td>
+                    <td>{{ row.Varietal }}</td>
+                    <td>{{ row['Release Date'] }}</td>
+                    <td>{{ row.Lat }}</td>
+                    <td>{{ row.Lon }}</td>
+                    <td>{{ row['Sugar Content (g/L)'] }}</td>
+                    <td>{{ row.Segment }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

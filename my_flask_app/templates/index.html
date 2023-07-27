@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logo Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Logo and Let's Go Back Button -->
+        <div class="logo-container">
+            <img id="logo" src="{{ url_for('static', filename='LCBO_01.gif') }}" alt="Logo">
+            <a href="{{ url_for('filter_page') }}" class="filter-button">Filter Data</a>
+        </div>
+    </div>
+</body>
+</html>
