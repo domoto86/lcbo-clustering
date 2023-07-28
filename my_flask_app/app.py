@@ -7,7 +7,7 @@ def read_csv_data(column_name):
     data = []
     unique_values = set()
 
-    with open('sugar_recommendation.csv', newline='') as csvfile:
+    with open('category_cluster.csv', newline='') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
             data.append(row)

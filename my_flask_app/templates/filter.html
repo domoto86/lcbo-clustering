@@ -18,7 +18,7 @@
         <form method="POST" action="{{ url_for('filter_page') }}">
             <label for="filter_column">Select column to filter:</label>
             <select name="filter_column" id="filter_column">
-                <option value="Segment">Segment</option>
+                <option value="Category Name">Wine Type</option>
                 
             </select>
             <label for="filter_value">Enter filter value:</label>
@@ -41,7 +41,7 @@
                 <th>Reviews</th>
                 <th>Size</th>
                 <th>Description</th>
-                <th>Category</th>
+                <th>Category Name</th>
                 <th>Alcohol/Vol</th>
                 <th>Made In</th>
                 <th>By</th>
@@ -61,7 +61,7 @@
                     <td>{{ row.Reviews }}</td>
                     <td>{{ row.Size }}</td>
                     <td>{{ row.Description }}</td>
-                    <td>{{ row.Category }}</td>
+                    <td>{{ row['Category Name'] }}</td>
                     <td>{{ row['Alcohol/Vol'] }}</td>
                     <td>{{ row['Made In'] }}</td>
                     <td>{{ row.By }}</td>
