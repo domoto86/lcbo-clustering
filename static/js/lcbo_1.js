@@ -172,7 +172,7 @@ function gauge(selectedValue) {
     });
 }
 
-// Toggle to new plots when option changed
+// Toggle to new plot when option changed
 function optionChanged(selectedValue) {
     demo(selectedValue);
     // bubble(selectedValue);
