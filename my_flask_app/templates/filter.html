@@ -19,7 +19,7 @@
             <label for="filter_column">Select column to filter:</label>
             <select name="filter_column" id="filter_column">
                 <option value="Segment">Segment</option>
-                
+                <!-- Add other options for your columns if needed -->
             </select>
             <label for="filter_value">Enter filter value:</label>
             <select name="filter_value" id="filter_value">
@@ -32,48 +32,31 @@
         </form>
 
         <!-- Filtered Data -->
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>Regular Price</th>
-                <th>Sale Price</th>
-                <th>Rating</th>
-                <th>Reviews</th>
-                <th>Size</th>
-                <th>Description</th>
-                <th>Category</th>
-                <th>Alcohol/Vol</th>
-                <th>Made In</th>
-                <th>By</th>
-                <th>Varietal</th>
-                <th>Release Date</th>
-                <th>Lat</th>
-                <th>Lon</th>
-                <th>Sugar Content (g/L)</th>
-                <th>Segment</th>
-            </tr>
+        <div class="filtered-data">
             {% for row in data %}
-                <tr>
-                    <td>{{ row.Name }}</td>
-                    <td>{{ row['Regular Price'] }}</td>
-                    <td>{{ row['Sale Price'] }}</td>
-                    <td>{{ row.Rating }}</td>
-                    <td>{{ row.Reviews }}</td>
-                    <td>{{ row.Size }}</td>
-                    <td>{{ row.Description }}</td>
-                    <td>{{ row.Category }}</td>
-                    <td>{{ row['Alcohol/Vol'] }}</td>
-                    <td>{{ row['Made In'] }}</td>
-                    <td>{{ row.By }}</td>
-                    <td>{{ row.Varietal }}</td>
-                    <td>{{ row['Release Date'] }}</td>
-                    <td>{{ row.Lat }}</td>
-                    <td>{{ row.Lon }}</td>
-                    <td>{{ row['Sugar Content (g/L)'] }}</td>
-                    <td>{{ row.Segment }}</td>
-                </tr>
+                <div class="item">
+                    <h2>{{ row.Name }}</h2>
+                    <p>Regular Price: {{ row['Regular Price'] }}</p>
+                    <p>Sale Price: {{ row['Sale Price'] }}</p>
+                    <p>Rating: {{ row.Rating }}</p>
+                    <p>Reviews: {{ row.Reviews }}</p>
+                    <p>Size: {{ row.Size }}</p>
+                    <p>Description: {{ row.Description }}</p>
+                    <p>Category: {{ row.Category }}</p>
+                    <p>Alcohol/Vol: {{ row['Alcohol/Vol'] }}</p>
+                    <p>Made In: {{ row['Made In'] }}</p>
+                    <p>By: {{ row.By }}</p>
+                    <p>Varietal: {{ row.Varietal }}</p>
+                    <p>Release Date: {{ row['Release Date'] }}</p>
+                    <p>Lat: {{ row.Lat }}</p>
+                    <p>Lon: {{ row.Lon }}</p>
+                    <p>Sugar Content (g/L): {{ row['Sugar Content (g/L)'] }}</p>
+                    <p>Segment: {{ row.Segment }}</p>
+                    <!-- Render the image link -->
+                    <img src="{{ row['Image Link'] }}" alt="{{ row.Name }}">
+                </div>
             {% endfor %}
-        </table>
+        </div>
     </div>
 </body>
 </html>
