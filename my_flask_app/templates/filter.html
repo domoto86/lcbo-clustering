@@ -35,6 +35,7 @@
         <div class="wine-boxes">
             {% for row in data %}
                 <div class="wine-box">
+                    <img src="{{ row['Image'] }}" alt="{{ row.Name }}">
                     <h2>{{ row.Name }}</h2>
                     <p><strong>Regular Price:</strong> {{ row['Regular Price'] }}</p>
                     <p><strong>Sale Price:</strong> {{ row['Sale Price'] }}</p>
