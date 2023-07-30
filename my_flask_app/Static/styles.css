@@ -85,3 +85,29 @@ th {
 .filter-button:active {
     background-color: #ff4444;
 }
+
+/* Styles for Wine Boxes */
+.wine-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.wine-box {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 10px;
+    max-width: 300px;
+    width: 100%;
+}
+
+.wine-box h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.wine-box p {
+    margin: 5px 0;
+}

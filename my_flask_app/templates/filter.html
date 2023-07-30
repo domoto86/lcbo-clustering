@@ -19,7 +19,7 @@
             <label for="filter_column">Select column to filter:</label>
             <select name="filter_column" id="filter_column">
                 <option value="Segment">Segment</option>
-                <!-- Add other options for your columns if needed -->
+                
             </select>
             <label for="filter_value">Enter filter value:</label>
             <select name="filter_value" id="filter_value">
@@ -31,29 +31,28 @@
             <button type="submit" class="filter-button">Filter</button>
         </form>
 
-        <!-- Filtered Data -->
-        <div class="filtered-data">
+        <!-- Filtered Data in Boxes -->
+        <div class="wine-boxes">
             {% for row in data %}
-                <div class="item">
+                <div class="wine-box">
                     <h2>{{ row.Name }}</h2>
-                    <p>Regular Price: {{ row['Regular Price'] }}</p>
-                    <p>Sale Price: {{ row['Sale Price'] }}</p>
-                    <p>Rating: {{ row.Rating }}</p>
-                    <p>Reviews: {{ row.Reviews }}</p>
-                    <p>Size: {{ row.Size }}</p>
-                    <p>Description: {{ row.Description }}</p>
-                    <p>Category: {{ row.Category }}</p>
-                    <p>Alcohol/Vol: {{ row['Alcohol/Vol'] }}</p>
-                    <p>Made In: {{ row['Made In'] }}</p>
-                    <p>By: {{ row.By }}</p>
-                    <p>Varietal: {{ row.Varietal }}</p>
-                    <p>Release Date: {{ row['Release Date'] }}</p>
-                    <p>Lat: {{ row.Lat }}</p>
-                    <p>Lon: {{ row.Lon }}</p>
-                    <p>Sugar Content (g/L): {{ row['Sugar Content (g/L)'] }}</p>
-                    <p>Segment: {{ row.Segment }}</p>
-                    <!-- Render the image link -->
-                    <img src="{{ row['Image Link'] }}" alt="{{ row.Name }}">
+                    <p><strong>Regular Price:</strong> {{ row['Regular Price'] }}</p>
+                    <p><strong>Sale Price:</strong> {{ row['Sale Price'] }}</p>
+                    <p><strong>Rating:</strong> {{ row.Rating }}</p>
+                    <p><strong>Reviews:</strong> {{ row.Reviews }}</p>
+                    <p><strong>Size:</strong> {{ row.Size }}</p>
+                    <p><strong>Description:</strong> {{ row.Description }}</p>
+                    <p><strong>Category:</strong> {{ row.Category }}</p>
+                    <p><strong>Alcohol/Vol:</strong> {{ row['Alcohol/Vol'] }}</p>
+                    <p><strong>Made In:</strong> {{ row['Made In'] }}</p>
+                    <p><strong>By:</strong> {{ row.By }}</p>
+                    <p><strong>Varietal:</strong> {{ row.Varietal }}</p>
+                    <p><strong>Release Date:</strong> {{ row['Release Date'] }}</p>
+                    <p><strong>Lat:</strong> {{ row.Lat }}</p>
+                    <p><strong>Lon:</strong> {{ row.Lon }}</p>
+                    <p><strong>Sugar Content (g/L):</strong> {{ row['Sugar Content (g/L)'] }}</p>
+                    <p><strong>Segment:</strong> {{ row.Segment }}</p>
+                    <p><strong>Country:</strong> {{ row.Country }}</p>
                 </div>
             {% endfor %}
         </div>
