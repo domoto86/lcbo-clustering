@@ -12,18 +12,18 @@
             <img id="logo" src="{{ url_for('static', filename='LCBO_08-1920x1311.jpg') }}" alt="Logo">
             <a href="{{ url_for('index') }}" class="filter-button">Let's Go Back</a> 
         </div>
-        <h1>CSV Data Filter</h1>
+        <h1>Let's Find Your Perfect Wine</h1>
 
         <!-- Filter form -->
         <form method="POST" action="{{ url_for('filter_page') }}">
-            <label for="filter_column">Select column to filter:</label>
+            <label for="filter_column">Select Filter:</label>
             <select name="filter_column" id="filter_column">
-                <option value="Segment">Segment</option>
+                <option value="Category Name">Wine Type</option>
                 
             </select>
-            <label for="filter_value">Enter filter value:</label>
+            <label for="filter_value">Choose one:</label>
             <select name="filter_value" id="filter_value">
-                <option value="">--All--</option>
+                <option value="">Select an Option</option>
                 {% for value in unique_values %}
                     <option value="{{ value }}" {% if value == filter_value %}selected{% endif %}>{{ value }}</option>
                 {% endfor %}
