@@ -17,10 +17,11 @@
                     <div class="wine-box-image">
                         <img src="{{ wine['Image'] }}" alt="{{ wine.Name }}">
                         <h2>{{ wine.Name }}</h2>
+                        <p><strong>Rating:</strong> {{ get_stars_representation(wine.Rating) }}</p> &nbsp;
                     </div>
                     <p><strong>Regular Price:</strong> {{ wine['Regular Price'] }}</p>
                     <p><strong>Sale Price:</strong> {{ wine['Sale Price'] }}</p>
-                    <p><strong>Rating:</strong> {{ wine.Rating }}</p>
+                    
                     <p><strong>Reviews:</strong> {{ wine.Reviews }}</p>
                     <p><strong>Size:</strong> {{ wine.Size }}</p>
                     <div class="description-justify">

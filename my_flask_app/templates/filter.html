@@ -38,16 +38,16 @@
                     <div class="wine-box-image">
                         <img src="{{ row['Image'] }}" alt="{{ row.Name }}">
                         <h2>{{ row.Name }}</h2>
+                        <p><strong>Rating:</strong> {{ get_stars_representation(row.Rating) }}</p>
                     </div>
                     <!-- <p><strong>Regular Price:</strong> {{ row['Regular Price'] }}</p>
                     <p><strong>Sale Price:</strong> {{ row['Sale Price'] }}</p>
-                    <p><strong>Rating:</strong> {{ row.Rating }}</p>
                     <p><strong>Reviews:</strong> {{ row.Reviews }}</p>
                     <p><strong>Size:</strong> {{ row.Size }}</p>
                     <p><strong>By:</strong> {{ row.By }}</p>
                     <p><strong>Made In:</strong> {{ row['Made In'] }}</p>
                     <p><strong>Varietal:</strong> {{ row.Varietal }}</p> -->
-                    <div class="description-justify">
+                    <div class="description-justify"> &nbsp;
                         <p><strong>Description:</strong> {{ row.Description }}</p>
                     </div>
                     <!-- <p><strong>Category:</strong> {{ row.Category }}</p>
