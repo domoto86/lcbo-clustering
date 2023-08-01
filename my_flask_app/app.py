@@ -40,7 +40,19 @@ def filter_page():
 
     return render_template('filter.html', data=filtered_data, unique_values=unique_values, filter_column=filter_column, filter_value=filter_value)
 
-
+# Wine Details Page
+@app.route('/wine_details/<int:wine_id>', methods=['GET'])
+def wine_details(wine_id):
+    filtered_data = request.args.get('filtered_data')
+    if filtered_data:
+        # Convert the filtered_data string back to a list using eval()
+        filtered_data = eval(filtered_data)
+        if 0 <= wine_id < len(filtered_data):
+            wine = filtered_data[wine_id]
+            return render_template('wine_details.html', wine=wine)
+    
+    # Handle the case where the wine_id is out of range or invalid
+    return "Wine details not found."
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wine Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="logo-container">
+            <img id="logo" src="{{ url_for('static', filename='LCBO_08-1920x1311.jpg') }}" alt="Logo">
+            <a href="javascript:history.go(-1)" class="filter-button">Go Back to Filter</a>
+        </div>
+        <div class="wine-details">
+                <div class="wine-box">
+                    <div class="wine-box-image">
+                        <img src="{{ wine['Image'] }}" alt="{{ wine.Name }}">
+                        <h2>{{ wine.Name }}</h2>
+                    </div>
+                    <p><strong>Regular Price:</strong> {{ wine['Regular Price'] }}</p>
+                    <p><strong>Sale Price:</strong> {{ wine['Sale Price'] }}</p>
+                    <p><strong>Rating:</strong> {{ wine.Rating }}</p>
+                    <p><strong>Reviews:</strong> {{ wine.Reviews }}</p>
+                    <p><strong>Size:</strong> {{ wine.Size }}</p>
+                    <div class="description-justify">
+                        <p><strong>Description:</strong> {{ wine.Description }}</p>
+                    </div>
+                    <p><strong>Category:</strong> {{ wine.Category }}</p>
+                    <p><strong>Alcohol/Vol:</strong> {{ wine['Alcohol/Vol'] }}</p>
+                    <p><strong>Made In:</strong> {{ wine['Made In'] }}</p>
+                    <p><strong>By:</strong> {{ wine.By }}</p>
+                    <p><strong>Varietal:</strong> {{ wine.Varietal }}</p>
+                    <p><strong>Release Date:</strong> {{ wine['Release Date'] }}</p>
+                    <p><strong>Lat:</strong> {{ wine.Lat }}</p>
+                    <p><strong>Lon:</strong> {{ wine.Lon }}</p>
+                    <p><strong>Sugar Content (g/L):</strong> {{ wine['Sugar Content (g/L)'] }}</p>
+                    <p><strong>Segment:</strong> {{ wine.Segment }}</p>
+                    <p><strong>Country:</strong> {{ wine.Country }}</p>
+                </div>
+        </div>
+    </div>
+</body>
+</html>

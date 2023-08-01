@@ -103,6 +103,16 @@ th {
     width: 100%;
 }
 
+.wine-box-image {
+    text-align: center;
+}
+
+.wine-box img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
 .wine-box h2 {
     font-size: 1.5rem;
     margin-bottom: 10px;
@@ -110,4 +120,16 @@ th {
 
 .wine-box p {
     margin: 5px 0;
+}
+
+/* Wine Details */
+.wine-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Descripion text justified */
+.description-justify {
+    text-align: justify;
 }
