@@ -1,5 +1,6 @@
+# app.py
 import csv
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -32,9 +33,14 @@ def filter_page():
         data, unique_values = read_csv_data(filter_column)
         filtered_data = [row for row in data if row[filter_column] == filter_value] if filter_value else data
     else:
-        data, unique_values = read_csv_data('Segment')
+        data, unique_values = read_csv_data('Varietal')
+
+    # Sort the filtered data by Sugar Content (g/L)
+    filtered_data = sorted(filtered_data, key=lambda x: float(x['Sugar Content (g/L)']))
 
     return render_template('filter.html', data=filtered_data, unique_values=unique_values, filter_column=filter_column, filter_value=filter_value)
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)

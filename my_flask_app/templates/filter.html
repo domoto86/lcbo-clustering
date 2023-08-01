@@ -18,11 +18,11 @@
         <form method="POST" action="{{ url_for('filter_page') }}">
             <label for="filter_column">Select Filter:</label>
             <select name="filter_column" id="filter_column">
-                <option value="Category Name">Wine Type</option>
+                <option value="Varietal">Grape Type</option>
                 
             </select>
             <label for="filter_value">Choose one:</label>
-            <select name="filter_value" id="filter_value">
+            <select name="filter_value" id="filter_value" style="width: 200px;">
                 <option value="">Select an Option</option>
                 {% for value in unique_values %}
                     <option value="{{ value }}" {% if value == filter_value %}selected{% endif %}>{{ value }}</option>
