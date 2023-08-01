@@ -10,17 +10,22 @@
     <div class="container">
         <div class="logo-container">
             <img id="logo" src="{{ url_for('static', filename='LCBO_08-1920x1311.jpg') }}" alt="Logo">
+            <a href="javascript:history.go(-1)" class="filter-button">Go Back to Filter</a>
         </div>
         <div class="wine-details">
                 <div class="wine-box">
-                    <img src="{{ wine['Image'] }}" alt="{{ wine.Name }}">
-                    <h2>{{ wine.Name }}</h2>
+                    <div class="wine-box-image">
+                        <img src="{{ wine['Image'] }}" alt="{{ wine.Name }}">
+                        <h2>{{ wine.Name }}</h2>
+                    </div>
                     <p><strong>Regular Price:</strong> {{ wine['Regular Price'] }}</p>
                     <p><strong>Sale Price:</strong> {{ wine['Sale Price'] }}</p>
                     <p><strong>Rating:</strong> {{ wine.Rating }}</p>
                     <p><strong>Reviews:</strong> {{ wine.Reviews }}</p>
                     <p><strong>Size:</strong> {{ wine.Size }}</p>
-                    <p><strong>Description:</strong> {{ wine.Description }}</p>
+                    <div class="description-justify">
+                        <p><strong>Description:</strong> {{ wine.Description }}</p>
+                    </div>
                     <p><strong>Category:</strong> {{ wine.Category }}</p>
                     <p><strong>Alcohol/Vol:</strong> {{ wine['Alcohol/Vol'] }}</p>
                     <p><strong>Made In:</strong> {{ wine['Made In'] }}</p>
@@ -34,7 +39,6 @@
                     <p><strong>Country:</strong> {{ wine.Country }}</p>
                 </div>
         </div>
-        <a href="javascript:history.go(-1)" class="filter-button">Go Back to Filter</a>
     </div>
 </body>
 </html>
