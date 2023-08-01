@@ -12,18 +12,18 @@
             <img id="logo" src="{{ url_for('static', filename='LCBO_08-1920x1311.jpg') }}" alt="Logo">
             <a href="{{ url_for('index') }}" class="filter-button">Let's Go Back</a> 
         </div>
-        <h1>CSV Data Filter</h1>
+        <h1>Let's Find Your Perfect Wine</h1>
 
         <!-- Filter form -->
         <form method="POST" action="{{ url_for('filter_page') }}">
-            <label for="filter_column">Select column to filter:</label>
+            <label for="filter_column">Select Filter:</label>
             <select name="filter_column" id="filter_column">
-                <option value="Category Name">Wine Type</option>
+                <option value="Varietal">Grape Type</option>
                 
             </select>
-            <label for="filter_value">Enter filter value:</label>
-            <select name="filter_value" id="filter_value">
-                <option value="">--All--</option>
+            <label for="filter_value">Choose one:</label>
+            <select name="filter_value" id="filter_value" style="width: 200px;">
+                <option value="">Select an Option</option>
                 {% for value in unique_values %}
                     <option value="{{ value }}" {% if value == filter_value %}selected{% endif %}>{{ value }}</option>
                 {% endfor %}
@@ -31,49 +31,32 @@
             <button type="submit" class="filter-button">Filter</button>
         </form>
 
-        <!-- Filtered Data -->
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>Regular Price</th>
-                <th>Sale Price</th>
-                <th>Rating</th>
-                <th>Reviews</th>
-                <th>Size</th>
-                <th>Description</th>
-                <th>Category Name</th>
-                <th>Alcohol/Vol</th>
-                <th>Made In</th>
-                <th>By</th>
-                <th>Varietal</th>
-                <th>Release Date</th>
-                <th>Lat</th>
-                <th>Lon</th>
-                <th>Sugar Content (g/L)</th>
-                <th>Segment</th>
-            </tr>
+        <!-- Filtered Data in Boxes -->
+        <div class="wine-boxes">
             {% for row in data %}
-                <tr>
-                    <td>{{ row.Name }}</td>
-                    <td>{{ row['Regular Price'] }}</td>
-                    <td>{{ row['Sale Price'] }}</td>
-                    <td>{{ row.Rating }}</td>
-                    <td>{{ row.Reviews }}</td>
-                    <td>{{ row.Size }}</td>
-                    <td>{{ row.Description }}</td>
-                    <td>{{ row['Category Name'] }}</td>
-                    <td>{{ row['Alcohol/Vol'] }}</td>
-                    <td>{{ row['Made In'] }}</td>
-                    <td>{{ row.By }}</td>
-                    <td>{{ row.Varietal }}</td>
-                    <td>{{ row['Release Date'] }}</td>
-                    <td>{{ row.Lat }}</td>
-                    <td>{{ row.Lon }}</td>
-                    <td>{{ row['Sugar Content (g/L)'] }}</td>
-                    <td>{{ row.Segment }}</td>
-                </tr>
+                <div class="wine-box">
+                    <img src="{{ row['Image'] }}" alt="{{ row.Name }}">
+                    <h2>{{ row.Name }}</h2>
+                    <p><strong>Regular Price:</strong> {{ row['Regular Price'] }}</p>
+                    <p><strong>Sale Price:</strong> {{ row['Sale Price'] }}</p>
+                    <p><strong>Rating:</strong> {{ row.Rating }}</p>
+                    <p><strong>Reviews:</strong> {{ row.Reviews }}</p>
+                    <p><strong>Size:</strong> {{ row.Size }}</p>
+                    <p><strong>Description:</strong> {{ row.Description }}</p>
+                    <p><strong>Category:</strong> {{ row.Category }}</p>
+                    <p><strong>Alcohol/Vol:</strong> {{ row['Alcohol/Vol'] }}</p>
+                    <p><strong>Made In:</strong> {{ row['Made In'] }}</p>
+                    <p><strong>By:</strong> {{ row.By }}</p>
+                    <p><strong>Varietal:</strong> {{ row.Varietal }}</p>
+                    <p><strong>Release Date:</strong> {{ row['Release Date'] }}</p>
+                    <p><strong>Lat:</strong> {{ row.Lat }}</p>
+                    <p><strong>Lon:</strong> {{ row.Lon }}</p>
+                    <p><strong>Sugar Content (g/L):</strong> {{ row['Sugar Content (g/L)'] }}</p>
+                    <p><strong>Segment:</strong> {{ row.Segment }}</p>
+                    <p><strong>Country:</strong> {{ row.Country }}</p>
+                </div>
             {% endfor %}
-        </table>
+        </div>
     </div>
 </body>
 </html>
