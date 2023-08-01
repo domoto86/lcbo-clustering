@@ -111,3 +111,10 @@ th {
 .wine-box p {
     margin: 5px 0;
 }
+
+/* Wine Details */
+.wine-detals {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}

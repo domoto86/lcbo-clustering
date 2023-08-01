@@ -54,6 +54,11 @@
                     <p><strong>Sugar Content (g/L):</strong> {{ row['Sugar Content (g/L)'] }}</p>
                     <p><strong>Segment:</strong> {{ row.Segment }}</p>
                     <p><strong>Country:</strong> {{ row.Country }}</p>
+                    <form method="GET" action="{{ url_for('wine_details', wine_id=data.index(row)) }}">
+                        <!-- Add a hidden input field to store the filtered_data -->
+                        <input type="hidden" name="filtered_data" value="{{ data }}">
+                        <button type="submit" class="filter-button">View Details</button>
+                    </form>
                 </div>
             {% endfor %}
         </div>
