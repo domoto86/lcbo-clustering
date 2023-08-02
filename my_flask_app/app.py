@@ -4,6 +4,13 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
+# To convert rating values to stars
+def get_stars_representation(rating):
+    num_stars = int(float(rating))
+    full_stars = '★' * num_stars
+    empty_stars = '☆' * (5 - num_stars)
+    return full_stars + empty_stars
+
 def read_csv_data(column_name):
     data = []
     unique_values = set()
@@ -38,7 +45,7 @@ def filter_page():
     # Sort the filtered data by Sugar Content (g/L)
     filtered_data = sorted(filtered_data, key=lambda x: float(x['Sugar Content (g/L)']))
 
-    return render_template('filter.html', data=filtered_data, unique_values=unique_values, filter_column=filter_column, filter_value=filter_value)
+    return render_template('filter.html', data=filtered_data, unique_values=unique_values, filter_column=filter_column, filter_value=filter_value, get_stars_representation=get_stars_representation)
 
 # Wine Details Page
 @app.route('/wine_details/<int:wine_id>', methods=['GET'])
@@ -49,9 +56,11 @@ def wine_details(wine_id):
         filtered_data = eval(filtered_data)
         if 0 <= wine_id < len(filtered_data):
             wine = filtered_data[wine_id]
-            return render_template('wine_details.html', wine=wine)
+            segment = wine['Segment']
+            same_segment_wines = [row for row in filtered_data if row['Segment'] == segment and row != wine]
+            return render_template('wine_details.html', wine=wine, same_segment_wines=same_segment_wines, get_stars_representation=get_stars_representation)
     
-    # Handle the case where the wine_id is out of range or invalid
+    # In case the wine id is not found
     return "Wine details not found."
 
 if __name__ == '__main__':
