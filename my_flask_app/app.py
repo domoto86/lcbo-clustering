@@ -56,7 +56,9 @@ def wine_details(wine_id):
         filtered_data = eval(filtered_data)
         if 0 <= wine_id < len(filtered_data):
             wine = filtered_data[wine_id]
-            return render_template('wine_details.html', wine=wine, get_stars_representation=get_stars_representation)
+            segment = wine['Segment']
+            same_segment_wines = [row for row in filtered_data if row['Segment'] == segment and row != wine]
+            return render_template('wine_details.html', wine=wine, same_segment_wines=same_segment_wines, get_stars_representation=get_stars_representation)
     
     # In case the wine id is not found
     return "Wine details not found."

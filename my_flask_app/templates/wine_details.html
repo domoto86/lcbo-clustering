@@ -40,6 +40,18 @@
                     <p><strong>Country:</strong> {{ wine.Country }}</p>
                 </div>
         </div>
+        <h2>You May also Like</h2>
+        <div class="wine-boxes">
+            {% for wine in same_segment_wines %}
+                <div class="wine-box">
+                    <div class="wine-box-image">
+                        <img src="{{ wine['Image'] }}" alt="{{ wine.Name }}">
+                        <h2>{{ wine.Name }}</h2>
+                        <p><strong>Rating:</strong> {{ get_stars_representation(wine.Rating) }}</p> &nbsp;
+                    </div>
+                </div>
+            {% endfor%}
+        </div>
     </div>
 </body>
 </html>
