@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Filtered Data</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="logo-container">
+            <img id="logo" src="{{ url_for('static', filename='LCBO_08-1920x1311.jpg') }}" alt="Logo">
+            <a href="{{ url_for('index') }}" class="filter-button">Let's Go Back</a> 
+        </div>
+        <h1>Let's Find Your Perfect Wine</h1>
+
+        <!-- Filter form -->
+        <form method="POST" action="{{ url_for('filter_page') }}">
+            <label for="filter_column">Select Filter:</label>
+            <select name="filter_column" id="filter_column">
+                <option value="Varietal Name">Grape Type</option>
+                
+            </select>
+            <label for="filter_value">Choose one:</label>
+            <select name="filter_value" id="filter_value" style="width: 200px;">
+                <option value="">Select an Option</option>
+                {% for value in unique_values %}
+                    <option value="{{ value }}" {% if value == filter_value %}selected{% endif %}>{{ value }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit" class="filter-button">Filter</button>
+        </form>
+
+        <!-- Filtered Data in Boxes -->
+        <div class="wine-boxes">
+            {% for row in data %}
+                <div class="wine-box">
+                    <div class="wine-box-image">
+                        <img src="{{ row['Image'] }}" alt="{{ row.Name }}">
+                        <h2>{{ row.Name }}</h2>
+                        <p><strong>Rating:</strong> {{ get_stars_representation(row.Rating) }}</p>
+                    </div>
+                    <!-- <p><strong>Regular Price:</strong> {{ row['Regular Price'] }}</p>
+                    <p><strong>Sale Price:</strong> {{ row['Sale Price'] }}</p>
+                    <p><strong>Reviews:</strong> {{ row.Reviews }}</p>
+                    <p><strong>Size:</strong> {{ row.Size }}</p>
+                    <p><strong>By:</strong> {{ row.By }}</p>
+                    <p><strong>Made In:</strong> {{ row['Made In'] }}</p>
+                    <p><strong>Varietal:</strong> {{ row.Varietal }}</p> -->
+                    <div class="description-justify"> &nbsp;
+                        <p><strong>Description:</strong> {{ row.Description }}</p>
+                    </div>
+                    <!-- <p><strong>Category:</strong> {{ row.Category }}</p>
+                    <p><strong>Alcohol/Vol:</strong> {{ row['Alcohol/Vol'] }}</p>
+                    <p><strong>Release Date:</strong> {{ row['Release Date'] }}</p>
+                    <p><strong>Lat:</strong> {{ row.Lat }}</p>
+                    <p><strong>Lon:</strong> {{ row.Lon }}</p>
+                    <p><strong>Sugar Content (g/L):</strong> {{ row['Sugar Content (g/L)'] }}</p>
+                    <p><strong>Segment:</strong> {{ row.Segment }}</p>
+                    <p><strong>Country:</strong> {{ row.Country }}</p> -->
+                    
+                        <form method="GET" action="{{ url_for('wine_details', wine_id=data.index(row)) }}">
+                            <!-- Add a hidden input field to store the filtered_data -->
+                            <input type="hidden" name="filtered_data" value="{{ data }}">
+                            <button type="submit" class="filter-button">View Details</button>
+                        </form>
+                
+                   </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
