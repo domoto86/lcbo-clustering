@@ -64,6 +64,10 @@
                                 <h2>{{ wine.Name }}</h2>
                             </a>
                             <p><strong>Rating:</strong> {{ get_stars_representation(wine.Rating) }}</p> &nbsp;
+                            <div class="details-container">
+                                <p><strong>Regular Price:</strong> ${{ wine['Regular Price'] }}     </p>
+                                <p><strong>Sale Price:</strong> ${{ wine['Sale Price'] }}</p>&nbsp;
+                            </div>
                         </div>
                         <iframe
                                 width="300"
