@@ -1,7 +1,7 @@
 # app.py
 import csv
-from flask import Flask, render_template, request
-
+from flask import Flask, render_template, request, redirect, url_for
+import config
 app = Flask(__name__)
 
 # To convert rating values to stars
@@ -40,12 +40,13 @@ def filter_page():
         data, unique_values = read_csv_data(filter_column)
         filtered_data = [row for row in data if row[filter_column] == filter_value] if filter_value else data
     else:
-        data, unique_values = read_csv_data('Varietal')
+        data, unique_values = read_csv_data('Varietal Name')
 
     # Sort the filtered data by Sugar Content (g/L)
     filtered_data = sorted(filtered_data, key=lambda x: float(x['Sugar Content (g/L)']))
 
     return render_template('filter.html', data=filtered_data, unique_values=unique_values, filter_column=filter_column, filter_value=filter_value, get_stars_representation=get_stars_representation)
+
 
 # Wine Details Page
 @app.route('/wine_details/<int:wine_id>', methods=['GET'])
@@ -58,10 +59,15 @@ def wine_details(wine_id):
             wine = filtered_data[wine_id]
             segment = wine['Segment']
             same_segment_wines = [row for row in filtered_data if row['Segment'] == segment and row != wine]
-            return render_template('wine_details.html', wine=wine, same_segment_wines=same_segment_wines, get_stars_representation=get_stars_representation)
+            you_may_like = 'You May Also Like'
+            return render_template('wine_details.html', wine=wine, same_segment_wines=same_segment_wines, you_may_like=you_may_like, get_stars_representation=get_stars_representation)
     
     # In case the wine id is not found
     return "Wine details not found."
+
+@app.route('/how', methods=['GET', 'POST'])
+def how():
+    return render_template('how.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
