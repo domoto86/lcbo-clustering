@@ -40,7 +40,7 @@ def filter_page():
         data, unique_values = read_csv_data(filter_column)
         filtered_data = [row for row in data if row[filter_column] == filter_value] if filter_value else data
     else:
-        data, unique_values = read_csv_data('Varietal')
+        data, unique_values = read_csv_data('Varietal Name')
 
     # Sort the filtered data by Sugar Content (g/L)
     filtered_data = sorted(filtered_data, key=lambda x: float(x['Sugar Content (g/L)']))
@@ -58,7 +58,8 @@ def wine_details(wine_id):
             wine = filtered_data[wine_id]
             segment = wine['Segment']
             same_segment_wines = [row for row in filtered_data if row['Segment'] == segment and row != wine]
-            return render_template('wine_details.html', wine=wine, same_segment_wines=same_segment_wines, get_stars_representation=get_stars_representation)
+            you_may_like = 'You May Also Like'
+            return render_template('wine_details.html', wine=wine, same_segment_wines=same_segment_wines, you_may_like=you_may_like, get_stars_representation=get_stars_representation)
     
     # In case the wine id is not found
     return "Wine details not found."

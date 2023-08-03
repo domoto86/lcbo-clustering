@@ -15,42 +15,64 @@
         <div class="wine-details">
                 <div class="wine-box">
                     <div class="wine-box-image">
-                        <img src="{{ wine['Image'] }}" alt="{{ wine.Name }}">
-                        <h2>{{ wine.Name }}</h2>
+                        <a href="{{ wine.Link }}" target="-blank">    
+                            <img src="{{ wine['Image'] }}" alt="{{ wine.Name }}">
+                            <h2>{{ wine.Name }}</h2>
+                        </a>
                         <p><strong>Rating:</strong> {{ get_stars_representation(wine.Rating) }}</p> &nbsp;
                     </div>
-                    <p><strong>Regular Price:</strong> {{ wine['Regular Price'] }}</p>
-                    <p><strong>Sale Price:</strong> {{ wine['Sale Price'] }}</p>
+                    <p><strong>Regular Price:</strong> ${{ wine['Regular Price'] }}</p>
+                    <p><strong>Sale Price:</strong> ${{ wine['Sale Price'] }}</p>
                     <p><strong>Reviews:</strong> {{ wine.Reviews }}</p>
                     <p><strong>Size:</strong> {{ wine.Size }}</p>
                     <div class="description-justify">
                         <p><strong>Description:</strong> {{ wine.Description }}</p>
                     </div>
-                    <p><strong>Category:</strong> {{ wine.Category }}</p>
+                    <p><strong>Category:</strong> {{ wine['Category Name'] }}</p>
                     <p><strong>Alcohol/Vol:</strong> {{ wine['Alcohol/Vol'] }}</p>
                     <p><strong>Made In:</strong> {{ wine['Made In'] }}</p>
                     <p><strong>By:</strong> {{ wine.By }}</p>
-                    <p><strong>Varietal:</strong> {{ wine.Varietal }}</p>
-                    <p><strong>Release Date:</strong> {{ wine['Release Date'] }}</p>
-                    <p><strong>Lat:</strong> {{ wine.Lat }}</p>
-                    <p><strong>Lon:</strong> {{ wine.Lon }}</p>
+                    <p><strong>Varietal:</strong> {{ wine['Varietal Name']}}</p>
+                    <!-- <p><strong>Release Date:</strong> {{ wine['Release Date'] }}</p> -->
+                    <!-- <p><strong>Lat:</strong> {{ wine.Lat }}</p>
+                    <p><strong>Lon:</strong> {{ wine.Lon }}</p> -->
                     <p><strong>Sugar Content (g/L):</strong> {{ wine['Sugar Content (g/L)'] }}</p>
-                    <p><strong>Segment:</strong> {{ wine.Segment }}</p>
-                    <p><strong>Country:</strong> {{ wine.Country }}</p>
+                    <!-- <p><strong>Segment:</strong> {{ wine.Segment }}</p> -->
+                    <iframe
+                            width="300"
+                            height="200"
+                            frameborder="0"
+                            style="border:0"
+                            src="https://www.google.com/maps/embed/v1/view?key=YOUR_GOOGLE_MAPS_API_KEY&center={{ wine.Lat }},{{ wine.Lon }}&zoom=10"
+                            allowfullscreen
+                    ></iframe>
                 </div>
         </div>
-        <h2>You May also Like</h2>
-        <div class="wine-boxes">
-            {% for wine in same_segment_wines %}
-                <div class="wine-box">
-                    <div class="wine-box-image">
-                        <img src="{{ wine['Image'] }}" alt="{{ wine.Name }}">
-                        <h2>{{ wine.Name }}</h2>
-                        <p><strong>Rating:</strong> {{ get_stars_representation(wine.Rating) }}</p> &nbsp;
+        {% if same_segment_wines %}
+        <div class="also-like">
+            <h2>You May Also Like</h2>
+            <div class="wine-boxes">
+                {% for wine in same_segment_wines %}
+                    <div class="wine-box">
+                        <div class="wine-box-image">
+                            <a href="{{ wine.Link }}" target="-blank">    
+                                <img src="{{ wine['Image'] }}" alt="{{ wine.Name }}">
+                                <h2>{{ wine.Name }}</h2>
+                            </a>
+                            <p><strong>Rating:</strong> {{ get_stars_representation(wine.Rating) }}</p> &nbsp;
+                        </div>
+                        <iframe
+                            width="300"
+                            height="200"
+                            frameborder="0"
+                            style="border:0"
+                            src="https://www.google.com/maps/embed/v1/view?key=YOUR_GOOGLE_MAPS_API_KEY&center={{ wine.Lat }},{{ wine.Lon }}&zoom=10"
+                            allowfullscreen
+                        ></iframe>
                     </div>
-                </div>
-            {% endfor%}
-        </div>
+                {% endfor%}
+            </div>
+        {% endif %}
     </div>
 </body>
 </html>

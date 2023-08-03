@@ -164,3 +164,7 @@ th {
     transform-origin: bottom;
     z-index: 0;
 }
+
+.also-like {
+    text-align: center;
+}
