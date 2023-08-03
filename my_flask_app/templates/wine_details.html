@@ -21,32 +21,35 @@
                         </a>
                         <p><strong>Rating:</strong> {{ get_stars_representation(wine.Rating) }}</p> &nbsp;
                     </div>
-                    <p><strong>Regular Price:</strong> ${{ wine['Regular Price'] }}</p>
-                    <p><strong>Sale Price:</strong> ${{ wine['Sale Price'] }}</p>
+                    <div class="details-container">
+                        <p><strong>Regular Price:</strong> ${{ wine['Regular Price'] }}     </p>
+                        <p><strong>Sale Price:</strong> ${{ wine['Sale Price'] }}</p>
+                    </div>
                     <p><strong>Reviews:</strong> {{ wine.Reviews }}</p>
                     <p><strong>Size:</strong> {{ wine.Size }}</p>
                     <div class="description-justify">
                         <p><strong>Description:</strong> {{ wine.Description }}</p>
                     </div>
                     <p><strong>Category:</strong> {{ wine['Category Name'] }}</p>
-                    <p><strong>Alcohol/Vol:</strong> {{ wine['Alcohol/Vol'] }}</p>
-                    <p><strong>Made In:</strong> {{ wine['Made In'] }}</p>
-                    <p><strong>By:</strong> {{ wine.By }}</p>
                     <p><strong>Varietal:</strong> {{ wine['Varietal Name']}}</p>
+                    <p><strong>Alcohol/Vol:</strong> {{ wine['Alcohol/Vol'] }}</p>
                     <!-- <p><strong>Release Date:</strong> {{ wine['Release Date'] }}</p> -->
                     <!-- <p><strong>Lat:</strong> {{ wine.Lat }}</p>
                     <p><strong>Lon:</strong> {{ wine.Lon }}</p> -->
                     <p><strong>Sugar Content (g/L):</strong> {{ wine['Sugar Content (g/L)'] }}</p>
                     <!-- <p><strong>Segment:</strong> {{ wine.Segment }}</p> -->
+                    <p></p>
                     <iframe
                             width="300"
                             height="300"
                             frameborder="0"
-                            style="border:0"
-                            src="https://www.google.com/maps/embed/v1/place?key=&q={{ wine['Made In'] }}&zoom=4"
+                            style="border:0; border-radius: 15%"
+                            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCIwrIZwTg2RgnsdErfLtnz5s7kIRX6tAM&q={{ wine['Made In'] }}&maptype=roadmap&zoom=4"
                             allowfullscreen
                     ></iframe>
-                    
+                    <p></p>
+                    <p><strong>Made In:</strong> {{ wine['Made In'] }}</p>
+                    <p><strong>By:</strong> {{ wine.By }}</p>
                 </div>
         </div>
         {% if same_segment_wines %}
@@ -63,14 +66,13 @@
                             <p><strong>Rating:</strong> {{ get_stars_representation(wine.Rating) }}</p> &nbsp;
                         </div>
                         <iframe
-                            width="300"
-                            height="300"
-                            frameborder="0"
-                            style="border:0"
-                            src="https://www.google.com/maps/embed/v1/place?key=&q={{ wine['Made In'] }}&zoom=4"
-                            allowfullscreen
-                    >   </iframe>
-                        
+                                width="300"
+                                height="300"
+                                frameborder="0"
+                                style="border:0; border-radius: 15%"
+                                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCIwrIZwTg2RgnsdErfLtnz5s7kIRX6tAM&q={{ wine['Made In'] }}&maptype=roadmap&zoom=4"
+                                allowfullscreen
+                        ></iframe>
                     </div>
                 {% endfor%}
             </div>

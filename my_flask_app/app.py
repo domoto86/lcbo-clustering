@@ -65,5 +65,9 @@ def wine_details(wine_id):
     # In case the wine id is not found
     return "Wine details not found."
 
+@app.route('/how', methods=['GET', 'POST'])
+def how():
+    return render_template('how.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
