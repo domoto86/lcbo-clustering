@@ -1,7 +1,7 @@
 # app.py
 import csv
 from flask import Flask, render_template, request, redirect, url_for
-
+import config
 app = Flask(__name__)
 
 # To convert rating values to stars
@@ -46,6 +46,7 @@ def filter_page():
     filtered_data = sorted(filtered_data, key=lambda x: float(x['Sugar Content (g/L)']))
 
     return render_template('filter.html', data=filtered_data, unique_values=unique_values, filter_column=filter_column, filter_value=filter_value, get_stars_representation=get_stars_representation)
+
 
 # Wine Details Page
 @app.route('/wine_details/<int:wine_id>', methods=['GET'])
